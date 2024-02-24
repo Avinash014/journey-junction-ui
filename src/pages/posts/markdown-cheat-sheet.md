@@ -1,3 +1,14 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: "Markdown cheat sheet"
+pubDate: 2024-02-17
+author: "Avinash Kumar"
+image:
+  url: "https://docs.astro.build/assets/full-logo-light.png"
+  alt: "The full Astro logo."
+tags: ["astro", "blogging", "learning in public"]
+---
+
 # Markdown Cheat Sheet
 
 Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
