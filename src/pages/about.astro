@@ -1,6 +1,5 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 import '../styles/global.css';
 const pageTitle = "About Me";
@@ -19,26 +18,8 @@ const finished = false;
 const goal = 3;
 ---
 
+  <BaseLayout pageTitle = {pageTitle}>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor}}>
-        h1 {
-          color: purple;
-          font-size: 4rem;
-        }
-        .skill {
-            color: var(--skillColor);
-    font-weight: bold;
-  }
-      </style>
-  </head>
-  <body>
-    <Header />
-    <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
@@ -62,9 +43,5 @@ const goal = 3;
 {finished && <p>I finished this tutorial!</p>}
 
 {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-<Footer />
-<script>import "../scripts/menu.js";</script>
-
-</body>
-</html>
+</BaseLayout>
 
