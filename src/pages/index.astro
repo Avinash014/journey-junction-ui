@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Home Page";
+import Flow from './Flow'
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <h2>My awesome blog subtitle-1</h2>
+  <Flow client:load />
+  <h2>My awesome blog subtitle-2</h2>
 </BaseLayout>
