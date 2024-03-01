@@ -1,0 +1,13 @@
+---
+import RendererHeader from '../../components/Renderer/RendererHeader'
+import RendererBody from '../../components/Renderer/RendererBody'
+import RendererMain from '../../components/Renderer/RendererMain'
+import RendererLayout from '../../layouts/RendererLayout.astro'
+
+
+---
+
+<RendererLayout>
+    <RendererHeader client:load/>
+    <RendererBody client:load/>
+</RendererLayout>
