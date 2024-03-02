@@ -11,12 +11,12 @@ const RendererBody = () => {
       <div className="basis-1/4 bg-gray-400">
         <Toolbar />
       </div>
-      <div className="basis-1/2 bg-gray-200">
+      <div className="basis-3/4 bg-gray-200">
         <RendererMain />
       </div>
-      <div className="basis-1/4 bg-gray-400">
+      {/* <div className="basis-1/4 bg-gray-400">
         <EditTool />
-      </div>
+      </div> */}
     </div>
   );
 };

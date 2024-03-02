@@ -35,7 +35,7 @@ const connectionLineStyle = { stroke: "white" };
 
 let nodeId = 0;
 
-function RendererMain() {
+function Flow() {
   const reactFlowInstance = useReactFlow();
   const onClick = useCallback(() => {
     const id = `${++nodeId}`;
@@ -76,7 +76,7 @@ function RendererMain() {
 export default function () {
   return (
     <ReactFlowProvider>
-      <RendererMain />
+      <Flow />
     </ReactFlowProvider>
   );
 }
