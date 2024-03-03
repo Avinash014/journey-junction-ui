@@ -1,5 +1,9 @@
-import { useCallback, useContext, useState } from "react";
-import ReactFlow, { ReactFlowProvider, useReactFlow } from "reactflow";
+import { useCallback, useContext, useEffect, useState } from "react";
+import ReactFlow, {
+  ReactFlowProvider,
+  useReactFlow,
+  Controls,
+} from "reactflow";
 import RendererContext from "../../context/RendererContext";
 
 import "reactflow/dist/style.css";
@@ -40,28 +44,29 @@ let nodeId = 0;
 function Flow() {
   const { selectedTool } = useContext(RendererContext);
   const reactFlowInstance = useReactFlow();
-  const onClick = useCallback(() => {
+  const toolSelectionHandler = useCallback((selectedTool) => {
+    if (selectedTool == null) return;
     const id = `${++nodeId}`;
     const newNode = {
       id,
       position: {
-        x: Math.random() * 500,
-        y: Math.random() * 500,
+        // x: Math.random() * 500,
+        // y: Math.random() * 500,
+        x: 0,
+        y: 0,
       },
       data: {
-        label: `Node ${id}`,
+        label: `${selectedTool} ${id}`,
       },
     };
     reactFlowInstance.addNodes(newNode);
   }, []);
+  useEffect(() => toolSelectionHandler(selectedTool), [selectedTool]);
 
   return (
     <>
       <div style={{ height: "800px", backgroundColor: "pink" }}>
-        <button onClick={onClick} className="btn-add">
-          add node
-        </button>
-        <div>{selectedTool}</div>
+        {/* <div>{selectedTool}</div> */}
         <ReactFlow
           defaultNodes={defaultNodes}
           defaultEdges={defaultEdges}
@@ -71,7 +76,9 @@ function Flow() {
             backgroundColor: "#D3D2E5",
           }}
           connectionLineStyle={connectionLineStyle}
-        />
+        >
+          <Controls />
+        </ReactFlow>
       </div>
     </>
   );
