@@ -1,5 +1,7 @@
-import { useCallback } from "react";
+import { useCallback, useContext, useState } from "react";
 import ReactFlow, { ReactFlowProvider, useReactFlow } from "reactflow";
+import RendererContext from "../../context/RendererContext";
+
 import "reactflow/dist/style.css";
 
 const defaultEdges = [{ id: "ea-b", source: "a", target: "b" }];
@@ -36,6 +38,7 @@ const connectionLineStyle = { stroke: "white" };
 let nodeId = 0;
 
 function Flow() {
+  const { selectedTool } = useContext(RendererContext);
   const reactFlowInstance = useReactFlow();
   const onClick = useCallback(() => {
     const id = `${++nodeId}`;
@@ -58,6 +61,7 @@ function Flow() {
         <button onClick={onClick} className="btn-add">
           add node
         </button>
+        <div>{selectedTool}</div>
         <ReactFlow
           defaultNodes={defaultNodes}
           defaultEdges={defaultEdges}
