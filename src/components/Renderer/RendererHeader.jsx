@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import RendererContext from "../../context/RendererContext";
 
 const Header = () => {
+  const { nodes, edges } = useContext(RendererContext);
+  const onClickHandler = () => {
+    console.log(nodes);
+    console.log(edges);
+  };
   return (
     <header style={headerStyle}>
       <div style={containerStyle}>
         <h1 class="text-2xl font-bold">Create Journey</h1>
         <div style={buttonContainerStyle}>
-          <button style={buttonStyle}>Save Journey</button>
+          <button style={buttonStyle} onClick={onClickHandler}>
+            Save Journey
+          </button>
         </div>
       </div>
     </header>
