@@ -8,6 +8,7 @@ import ReactFlow, {
   addEdge,
 } from "reactflow";
 import RendererContext from "../../context/RendererContext";
+import TextUpdaterNode from "../Nodes/TextUpdaterNode";
 
 import "reactflow/dist/style.css";
 
@@ -43,7 +44,7 @@ const edgeOptions = {
 const connectionLineStyle = { stroke: "white" };
 
 let nodeId = 0;
-
+const nodeTypes = { textUpdater: TextUpdaterNode };
 function Flow() {
   // const [nodes, setNodes] = useState(defaultNodes);
   // const [edges, setEdges] = useState(defaultEdges);
@@ -101,6 +102,7 @@ function Flow() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          nodeTypes={nodeTypes}
           // nodeOrigin={nodeOrigin}
           fitView
         >

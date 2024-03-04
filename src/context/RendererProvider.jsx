@@ -21,6 +21,12 @@ const defaultNodes = [
     data: { label: "Node C" },
     position: { x: 250, y: 250 },
   },
+  {
+    id: "node-1",
+    type: "textUpdater",
+    position: { x: 0, y: 0 },
+    data: { value: 123 },
+  },
 ];
 
 const RendererProvider = ({ children }) => {
