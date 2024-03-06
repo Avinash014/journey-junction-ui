@@ -1,38 +1,60 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { Handle, Position } from "reactflow";
 import "./text-updater-node.css";
 
 const handleStyle = { left: 10 };
 
-function TextUpdaterNode({ data, isConnectable }) {
+function TextUpdaterNode({
+  data,
+  isConnectable,
+  leftHandle,
+  rightHandle,
+  topHandle,
+  bottomHandle,
+}) {
   const onChange = useCallback((evt) => {
-    console.log(evt.target.value);
+    setInputValue(evt.target.value);
   }, []);
-
+  const [inputValue, setInputValue] = useState(data.label);
   return (
     <div className="text-updater-node">
-      <Handle
-        type="target"
-        position={Position.Top}
-        isConnectable={isConnectable}
-      />
       <div>
-        <label htmlFor="text">Text:</label>
-        <input id="text" name="text" onChange={onChange} className="nodrag" />
+        <input
+          id="text"
+          name="text"
+          value={inputValue}
+          onChange={onChange}
+          className="nodrag"
+        />
       </div>
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="a"
-        style={handleStyle}
-        isConnectable={isConnectable}
-      />
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="b"
-        isConnectable={isConnectable}
-      />
+      {topHandle && (
+        <Handle
+          type="target"
+          position={Position.Top}
+          isConnectable={isConnectable}
+        />
+      )}
+      {rightHandle && (
+        <Handle
+          type="source"
+          position={Position.Right}
+          isConnectable={isConnectable}
+        />
+      )}
+      {bottomHandle && (
+        <Handle
+          type="source"
+          position={Position.Bottom}
+          isConnectable={isConnectable}
+        />
+      )}
+      {leftHandle && (
+        <Handle
+          type="source"
+          position={Position.Left}
+          isConnectable={isConnectable}
+        />
+      )}
     </div>
   );
 }

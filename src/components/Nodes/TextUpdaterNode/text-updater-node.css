@@ -1,9 +1,8 @@
 .text-updater-node {
-  height: 50px;
-  border: 1px solid #eee;
+  border: 1px solid black;
   padding: 5px;
-  border-radius: 5px;
-  background: white;
+  border-radius: 3px;
+  /* background: white; */
 }
 
 .text-updater-node label {
