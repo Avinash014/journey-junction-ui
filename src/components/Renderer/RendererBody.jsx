@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Toolbar from "./Toolbar";
 import RendererMain from "./RendererMain";
 import EditTool from "./EditTool";
+import RendererContext from "../../context/RendererContext";
 
 const RendererBody = () => {
+  const { showEditTool } = useContext(RendererContext);
+  console.log(showEditTool);
   return (
     <div style={rendererbody} className="flex flex-row">
       <div className="basis-1/4 border-solid border-r border-black bg-gray-200">
@@ -12,9 +15,11 @@ const RendererBody = () => {
       <div className="basis-3/4 border-solid border-l border-black bg-gray-200">
         <RendererMain />
       </div>
-      {/* <div className="basis-1/4 bg-gray-400">
-        <EditTool />
-      </div> */}
+      {showEditTool && (
+        <div className="basis-1/4 bg-gray-400">
+          <EditTool />
+        </div>
+      )}
     </div>
   );
 };

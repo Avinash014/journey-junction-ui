@@ -30,6 +30,7 @@ const defaultNodes = [
 ];
 
 const RendererProvider = ({ children }) => {
+  const [showEditTool, setShowEditTool] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [nodes, setNodes] = useState(defaultNodes);
   const [edges, setEdges] = useState(defaultEdges);
@@ -37,6 +38,8 @@ const RendererProvider = ({ children }) => {
   return (
     <RendererContext.Provider
       value={{
+        showEditTool,
+        setShowEditTool,
         selectedTool,
         setSelectedTool,
         nodes,
