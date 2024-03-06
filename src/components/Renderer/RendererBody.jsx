@@ -5,13 +5,11 @@ import EditTool from "./EditTool";
 
 const RendererBody = () => {
   return (
-    // <div></div>
-    // <div style={{ height: "calc(100vh - 80px)" }} className="flex flex-row">
     <div style={rendererbody} className="flex flex-row">
-      <div className="basis-1/4 bg-gray-400">
+      <div className="basis-1/4 border-solid border-r border-black bg-gray-200">
         <Toolbar />
       </div>
-      <div className="basis-3/4 bg-gray-200">
+      <div className="basis-3/4 border-solid border-l border-black bg-gray-200">
         <RendererMain />
       </div>
       {/* <div className="basis-1/4 bg-gray-400">

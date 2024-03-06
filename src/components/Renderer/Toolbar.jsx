@@ -9,7 +9,7 @@ const Toolbar = () => {
 
   return (
     <div class="p-4">
-      <div class="flex flex-col">
+      <div class="flex flex-col space-y-1 ">
         <OutlineButton onClick={() => setSelectedTool("title")}>
           Title
         </OutlineButton>

@@ -83,7 +83,7 @@ function Flow() {
 
   return (
     <>
-      <div style={{ height: "800px", backgroundColor: "pink" }}>
+      <div style={{ height: "800px" }}>
         {/* <div>{selectedTool}</div> */}
         {/* <ReactFlow
           defaultNodes={defaultNodes}
