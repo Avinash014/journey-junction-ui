@@ -13,24 +13,20 @@ function TextUpdaterNode({
   topHandle,
   bottomHandle,
 }) {
-  const { setShowEditTool } = useContext(RendererContext);
+  const { setShowNodeEditor } = useContext(RendererContext);
   const onChange = useCallback((evt) => {
     setInputValue(evt.target.value);
   }, []);
   const [inputValue, setInputValue] = useState(data.label);
   const handleFocus = () => {
     console.log("seting ShowEditTool true");
-    setShowEditTool(true);
+    setShowNodeEditor(true);
   };
-  const handleBlur = useCallback(() => {
-    console.log("seting ShowEditTool false");
-    setShowEditTool(false);
-  });
+  
   return (
     <div
       className="text-updater-node"
       onFocus={handleFocus}
-      onBlur={handleBlur}
     >
       <div>
         <input
