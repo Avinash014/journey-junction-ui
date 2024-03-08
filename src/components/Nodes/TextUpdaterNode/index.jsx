@@ -1,42 +1,44 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Handle, Position } from "reactflow";
 import RendererContext from "../../../context/RendererContext";
 import "./text-updater-node.css";
 
 const handleStyle = { left: 10 };
 
-function TextUpdaterNode({
-  data,
-  isConnectable,
-  leftHandle,
-  rightHandle,
-  topHandle,
-  bottomHandle,
-}) {
-  const { setShowNodeEditor } = useContext(RendererContext);
-  const onChange = useCallback((evt) => {
-    setInputValue(evt.target.value);
-  }, []);
-  const [inputValue, setInputValue] = useState(data.label);
+function TextUpdaterNode(props) {
+  const { setShowNodeEditor, setCurrentNodeId, currentNode, currentNodeLabel } =
+    useContext(RendererContext);
+  const {
+    id,
+    data,
+    isConnectable,
+    leftHandle,
+    rightHandle,
+    topHandle,
+    bottomHandle,
+  } = props;
   const handleFocus = () => {
     console.log("seting ShowEditTool true");
+    console.log(props);
     setShowNodeEditor(true);
+    setCurrentNodeId(id);
+    console.log(id);
   };
-  
+  // const [value, setValue] = useState(currentNodeLabel);
+  useEffect(() => {
+    console.log(currentNode);
+  }, [currentNode]);
+  // useEffect(() => {
+  //   setValue(currentNodeLabel);
+  // }, [currentNodeLabel]);
+  // const handleChange = useCallback((evt) => {
+  //   setValue(evt.target.value);
+  // });
+
   return (
-    <div
-      className="text-updater-node"
-      onFocus={handleFocus}
-    >
-      <div>
-        <input
-          id="text"
-          name="text"
-          value={inputValue}
-          onChange={onChange}
-          className="nodrag"
-        />
-      </div>
+    <div className="text-updater-node" onClick={handleFocus}>
+      {/* <input id={"value-" + id} onChange={handleChange} value={value} /> */}
+      <div id={"value-" + id}>{currentNodeLabel}</div>
       {topHandle && (
         <Handle
           type="target"

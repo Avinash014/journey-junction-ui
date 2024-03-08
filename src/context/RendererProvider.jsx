@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import RendererContext from "./RendererContext";
 
-const defaultEdges = [{ id: "ea-b", source: "a", target: "b" }];
+const defaultEdges = [];
 const defaultNodes = [
-  {
-    id: "a",
-    type: "input",
-    data: { label: "Node A" },
-    position: { x: 250, y: 25 },
-  },
-
   {
     id: "b",
     data: { label: "Node B" },
@@ -21,12 +14,6 @@ const defaultNodes = [
     data: { label: "Node C" },
     position: { x: 250, y: 250 },
   },
-  {
-    id: "node-1",
-    type: "textUpdater",
-    position: { x: 0, y: 0 },
-    data: { value: 123 },
-  },
 ];
 
 const RendererProvider = ({ children }) => {
@@ -34,7 +21,16 @@ const RendererProvider = ({ children }) => {
   const [selectedTool, setSelectedTool] = useState(null);
   const [nodes, setNodes] = useState(defaultNodes);
   const [edges, setEdges] = useState(defaultEdges);
-
+  const [currentNodeId, setCurrentNodeId] = useState(null);
+  const [currentNode, setCurrentNode] = useState(null);
+  const [currentNodeLabel, setCurrentNodeLabel] = useState(null);
+  useEffect(() => {
+    if (!currentNodeId) return;
+    var matchNode = nodes.find((node) => node.id == currentNodeId);
+    setCurrentNode(matchNode);
+    setCurrentNodeLabel(matchNode?.data?.label);
+  }, [currentNodeId]);
+ 
   return (
     <RendererContext.Provider
       value={{
@@ -46,6 +42,11 @@ const RendererProvider = ({ children }) => {
         setNodes,
         edges,
         setEdges,
+        currentNodeId,
+        setCurrentNodeId,
+        currentNode,
+        currentNodeLabel,
+        setCurrentNodeLabel,
       }}
     >
       {children}

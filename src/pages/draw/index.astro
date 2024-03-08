@@ -1,10 +1,12 @@
 ---
 import RendererLayout from '../../layouts/RendererLayout.astro'
 import Renderer from '../../components/Renderer'
+import React from 'react'
 
 ---
-
+<React.StrictMode>
 <RendererLayout>
     <Renderer client:load/>    
 </RendererLayout>
+</React.StrictMode>
 

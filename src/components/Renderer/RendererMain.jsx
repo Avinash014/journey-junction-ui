@@ -27,7 +27,6 @@ const edgeOptions = {
 
 const connectionLineStyle = { stroke: "white" };
 
-let nodeId = 0;
 const nodeTypes = {
   textUpdater: TextUpdaterNode,
   topic: TopicNode,
@@ -38,10 +37,15 @@ const nodeTypes = {
   title: TitleNode,
 };
 function Flow() {
-  // const [nodes, setNodes] = useState(defaultNodes);
-  // const [edges, setEdges] = useState(defaultEdges);
-  const { selectedTool, nodes, setNodes, edges, setEdges } =
-    useContext(RendererContext);
+  const {
+    selectedTool,
+    nodes,
+    setNodes,
+    edges,
+    setEdges,
+    setShowNodeEditor,
+    setCurrentNodeId,
+  } = useContext(RendererContext);
 
   const reactFlowInstance = useReactFlow();
 
@@ -51,7 +55,7 @@ function Flow() {
   }, []);
 
   const addNode = (type = "output") => {
-    const id = `${++nodeId}`;
+    const id = Date.now().toString();
     const newNode = {
       id,
       position: {
@@ -62,12 +66,15 @@ function Flow() {
       },
       type: type,
       data: {
-        label: `${type} ${id}`,
+        label: `${type}`,
       },
     };
     reactFlowInstance.addNodes(newNode);
+    setShowNodeEditor(true);
+    setCurrentNodeId(id);
   };
   useEffect(() => toolSelectionHandler(selectedTool), [selectedTool]);
+
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
