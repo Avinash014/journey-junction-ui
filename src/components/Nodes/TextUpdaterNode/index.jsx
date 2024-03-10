@@ -6,8 +6,13 @@ import "./text-updater-node.css";
 const handleStyle = { left: 10 };
 
 function TextUpdaterNode(props) {
-  const { setShowNodeEditor, setCurrentNodeId, currentNode, currentNodeLabel } =
-    useContext(RendererContext);
+  const {
+    setShowNodeEditor,
+    setCurrentNodeId,
+    currentNode,
+    currentNodeLabel,
+    currentNodeId,
+  } = useContext(RendererContext);
   const {
     id,
     data,
@@ -24,21 +29,19 @@ function TextUpdaterNode(props) {
     setCurrentNodeId(id);
     console.log(id);
   };
-  // const [value, setValue] = useState(currentNodeLabel);
-  useEffect(() => {
-    console.log(currentNode);
-  }, [currentNode]);
+  const [value, setValue] = useState(data?.label);
   // useEffect(() => {
-  //   setValue(currentNodeLabel);
-  // }, [currentNodeLabel]);
-  // const handleChange = useCallback((evt) => {
-  //   setValue(evt.target.value);
-  // });
+  //   if(id == currentNodeId)
+  //   console.log(currentNode);
+  // }, [currentNode]);
+  useEffect(() => {
+    if (id == currentNodeId) setValue(currentNodeLabel);
+  }, [currentNodeLabel]);
 
   return (
     <div className="text-updater-node" onClick={handleFocus}>
       {/* <input id={"value-" + id} onChange={handleChange} value={value} /> */}
-      <div id={"value-" + id}>{currentNodeLabel}</div>
+      <div id={"value-" + id}>{value}</div>
       {topHandle && (
         <Handle
           type="target"
