@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useReducer } from "react";
-import { RendererContext } from "./RendererContext";
+import { RendererContext, RendererDispatchContext } from "./RendererContext";
 
 const defaultEdges = [];
 const defaultNodes = [
@@ -50,7 +50,7 @@ const RendererProvider = ({ children }) => {
         setCurrentNodeLabel,
       }}
     >
-      <RendererDispatchContext.Provider value={dispatch}>
+      <RendererDispatchContext.Provider value={null}>
         {children}
       </RendererDispatchContext.Provider>
     </RendererContext.Provider>
