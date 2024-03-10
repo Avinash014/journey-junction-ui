@@ -1,7 +1,7 @@
 import React from "react";
 import TextUpdaterNode from "../TextUpdaterNode";
 
-function SectionNode({ data }) {
-  return <TextUpdaterNode data={data} topHandle={true} />;
+function SectionNode({ id, data }) {
+  return <TextUpdaterNode id={id} data={data} />;
 }
 export default SectionNode;

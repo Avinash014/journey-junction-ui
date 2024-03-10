@@ -23,14 +23,14 @@ const RendererProvider = ({ children }) => {
   const [edges, setEdges] = useState(defaultEdges);
   const [currentNodeId, setCurrentNodeId] = useState(null);
   const [currentNode, setCurrentNode] = useState(null);
-  const [currentNodeLabel, setCurrentNodeLabel] = useState(null);
+  const [currentNodeLabel, setCurrentNodeLabel] = useState("");
   useEffect(() => {
     if (!currentNodeId) return;
     var matchNode = nodes.find((node) => node.id == currentNodeId);
     setCurrentNode(matchNode);
     setCurrentNodeLabel(matchNode?.data?.label);
   }, [currentNodeId]);
- 
+
   return (
     <RendererContext.Provider
       value={{
