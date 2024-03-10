@@ -1,7 +1,7 @@
 import React from "react";
 import SimpleButton from "../Buttons/ButtonSimple";
 import OutlineButton from "../Buttons/ButtonOutline";
-import RendererContext from "../../context/RendererContext";
+import {RendererContext} from "../../context/RendererContext";
 import { useContext } from "react";
 
 const Toolbar = () => {

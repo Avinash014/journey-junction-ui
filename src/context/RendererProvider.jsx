@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import RendererContext from "./RendererContext";
+import React, { useCallback, useEffect, useState, useReducer } from "react";
+import { RendererContext } from "./RendererContext";
 
 const defaultEdges = [];
 const defaultNodes = [
@@ -17,6 +17,7 @@ const defaultNodes = [
 ];
 
 const RendererProvider = ({ children }) => {
+  // const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   const [showNodeEditor, setShowNodeEditor] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [nodes, setNodes] = useState(defaultNodes);
@@ -49,7 +50,9 @@ const RendererProvider = ({ children }) => {
         setCurrentNodeLabel,
       }}
     >
-      {children}
+      <RendererDispatchContext.Provider value={dispatch}>
+        {children}
+      </RendererDispatchContext.Provider>
     </RendererContext.Provider>
   );
 };

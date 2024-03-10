@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Toolbar from "./Toolbar";
 import RendererMain from "./RendererMain";
 import NodeEditor from "./NodeEditor";
-import RendererContext from "../../context/RendererContext";
+import {RendererContext} from "../../context/RendererContext";
 
 const RendererBody = () => {
   const { showNodeEditor } = useContext(RendererContext);

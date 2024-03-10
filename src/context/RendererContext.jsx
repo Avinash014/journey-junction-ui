@@ -1,5 +1,4 @@
 import React from "react";
 
-const RendererContext = React.createContext();
-
-export default RendererContext;
+export const RendererContext = React.createContext();
+export const RendererDispatchContext = React.createContext();

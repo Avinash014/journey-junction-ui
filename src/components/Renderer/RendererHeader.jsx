@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import RendererContext from "../../context/RendererContext";
+import {RendererContext} from "../../context/RendererContext";
 
 const Header = () => {
   const { nodes, edges } = useContext(RendererContext);

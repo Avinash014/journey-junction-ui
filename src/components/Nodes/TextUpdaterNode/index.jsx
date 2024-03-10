@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Handle, Position } from "reactflow";
-import RendererContext from "../../../context/RendererContext";
+import {RendererContext} from "../../../context/RendererContext";
 import "./text-updater-node.css";
 
 const handleStyle = { left: 10 };

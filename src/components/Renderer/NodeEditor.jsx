@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
-import RendererContext from "../../context/RendererContext";
+import {RendererContext} from "../../context/RendererContext";
 
 const NodeEditor = () => {
   const {
