@@ -3,17 +3,17 @@ import { RendererContext, RendererDispatchContext } from "./RendererContext";
 
 const defaultEdges = [];
 const defaultNodes = [
-  {
-    id: "b",
-    data: { label: "Node B" },
-    position: { x: 100, y: 125 },
-  },
-  {
-    id: "c",
-    type: "output",
-    data: { label: "Node C" },
-    position: { x: 250, y: 250 },
-  },
+  // {
+  //   id: "b",
+  //   data: { label: "Node B" },
+  //   position: { x: 100, y: 125 },
+  // },
+  // {
+  //   id: "c",
+  //   type: "output",
+  //   data: { label: "Node C" },
+  //   position: { x: 250, y: 250 },
+  // },
 ];
 
 const RendererProvider = ({ children }) => {
@@ -31,6 +31,40 @@ const RendererProvider = ({ children }) => {
     setCurrentNode(matchNode);
     setCurrentNodeLabel(matchNode?.data?.label);
   }, [currentNodeId]);
+  // useEffect(() => {
+  //   storeNodeChange();
+  // }, [nodes]);
+  // useEffect(() => {
+  //   storeEdgeChange();
+  // }, [edges]);
+
+  const storeLableChange = useCallback((id, lable) => {
+    setNodes(
+      nodes.map((node) => {
+        if (node.id == id) {
+          return { ...node, label: label };
+        } else return node;
+      })
+    );
+  });
+  const storeNodeChange = useCallback((id, changedNode) => {
+    setNodes(
+      nodes.map((node) => {
+        if (node.id == id) {
+          return changedNode;
+        } else return node;
+      })
+    );
+  });
+  const storeEdgeChange = useCallback((id, changedEdge) => {
+    setEdges(
+      edges.map((edge) => {
+        if (edge.id == id) {
+          return changedEdge;
+        } else return node;
+      })
+    );
+  });
 
   return (
     <RendererContext.Provider
@@ -48,6 +82,9 @@ const RendererProvider = ({ children }) => {
         currentNode,
         currentNodeLabel,
         setCurrentNodeLabel,
+        storeLableChange,
+        storeNodeChange,
+        storeEdgeChange,
       }}
     >
       <RendererDispatchContext.Provider value={null}>

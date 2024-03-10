@@ -7,7 +7,7 @@ import ReactFlow, {
   applyEdgeChanges,
   addEdge,
 } from "reactflow";
-import {RendererContext} from "../../context/RendererContext";
+import { RendererContext } from "../../context/RendererContext";
 import TextUpdaterNode from "../Nodes/TextUpdaterNode";
 import TopicNode from "../Nodes/TopicNode";
 import SectionNode from "../Nodes/SectionNode";
@@ -70,8 +70,8 @@ function Flow() {
       },
     };
     reactFlowInstance.addNodes(newNode);
-    setShowNodeEditor(true);
-    setCurrentNodeId(id);
+    setShowNodeEditor(false);
+    setCurrentNodeId(null);
   };
   useEffect(() => toolSelectionHandler(selectedTool), [selectedTool]);
 
