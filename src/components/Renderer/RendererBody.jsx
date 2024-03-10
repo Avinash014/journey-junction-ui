@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import { ReactFlowProvider } from "reactflow";
 import Toolbar from "./Toolbar";
 import RendererMain from "./RendererMain";
 import NodeEditor from "./NodeEditor";
-import {RendererContext} from "../../context/RendererContext";
+import { RendererContext } from "../../context/RendererContext";
 
 const RendererBody = () => {
   const { showNodeEditor } = useContext(RendererContext);
@@ -12,14 +13,18 @@ const RendererBody = () => {
       <div className="basis-1/4 border-solid border-r border-black bg-gray-200">
         <Toolbar />
       </div>
-      <div className="basis-3/4 border-solid border-l border-black bg-gray-200">
-        <RendererMain />
+      <div className="basis-3/4 border-solid border-l border-black bg-gray-200 ">
+        <ReactFlowProvider>
+          <div className="flex flex-row">
+            <div className="basis-3/4 border-solid border-l border-black bg-gray-200 ">
+              <RendererMain />
+            </div>
+            <div className="basis-1/4 border-solid border-l border-black bg-gray-200 ">
+              {showNodeEditor && <NodeEditor />}
+            </div>
+          </div>
+        </ReactFlowProvider>
       </div>
-      {showNodeEditor && (
-        <div className="basis-1/4 bg-gray-400">
-          <NodeEditor />
-        </div>
-      )}
     </div>
   );
 };
