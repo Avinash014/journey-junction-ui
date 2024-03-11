@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { Handle, Position } from "reactflow";
-import {RendererContext} from "../../../context/RendererContext";
+import { Handle, Position, NodeResizer } from "reactflow";
+import { RendererContext } from "../../../context/RendererContext";
 import "./text-updater-node.css";
 
 const handleStyle = { left: 10 };
@@ -12,6 +12,7 @@ function TextUpdaterNode(props) {
     currentNode,
     currentNodeLabel,
     currentNodeId,
+    storeLableChange,
   } = useContext(RendererContext);
   const {
     id,
@@ -41,6 +42,7 @@ function TextUpdaterNode(props) {
   return (
     <div className="text-updater-node" onClick={handleFocus}>
       {/* <input id={"value-" + id} onChange={handleChange} value={value} /> */}
+      <NodeResizer minWidth={100} minHeight={30} />
       <div id={"value-" + id}>{value}</div>
       {topHandle && (
         <Handle

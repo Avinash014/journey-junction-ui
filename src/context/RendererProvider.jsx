@@ -2,19 +2,7 @@ import React, { useCallback, useEffect, useState, useReducer } from "react";
 import { RendererContext, RendererDispatchContext } from "./RendererContext";
 
 const defaultEdges = [];
-const defaultNodes = [
-  // {
-  //   id: "b",
-  //   data: { label: "Node B" },
-  //   position: { x: 100, y: 125 },
-  // },
-  // {
-  //   id: "c",
-  //   type: "output",
-  //   data: { label: "Node C" },
-  //   position: { x: 250, y: 250 },
-  // },
-];
+const defaultNodes = [];
 
 const RendererProvider = ({ children }) => {
   // const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);

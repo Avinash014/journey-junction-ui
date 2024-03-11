@@ -6,17 +6,13 @@ const NodeEditor = () => {
   const {
     setShowNodeEditor,
     currentNodeId,
-    nodes,
-    setNodes,
     setCurrentNodeLabel,
     currentNodeLabel,
     storeLableChange,
-    // updateNodeData
   } = useContext(RendererContext);
   const nodesAll = useNodes();
   const [currentNode, setCurrentNode] = useState(null);
 
-  // const [value, setValue] = useState(currentNodeLabel);
   const handleClick = useCallback(() => {
     console.log("seting ShowEditTool false");
     setShowNodeEditor(false);
@@ -24,7 +20,6 @@ const NodeEditor = () => {
   const handleChange = useCallback((evt) => {
     setCurrentNodeLabel(evt.target.value);
     storeLableChange(currentNodeId, evt.target.value);
-    // updateNodeData(currentNodeId, evt.target.value);
   }, []);
   useEffect(() => {
     console.log(currentNodeId);
