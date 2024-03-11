@@ -38,11 +38,11 @@ const RendererProvider = ({ children }) => {
   //   storeEdgeChange();
   // }, [edges]);
 
-  const storeLableChange = useCallback((id, lable) => {
-    setNodes(
-      nodes.map((node) => {
+  const storeLableChange = useCallback((id, newLabel) => {
+    setNodes((prevNodes) =>
+      prevNodes.map((node) => {
         if (node.id == id) {
-          return { ...node, label: label };
+          return { ...node, data: { ...node.data, label: newLabel } };
         } else return node;
       })
     );
