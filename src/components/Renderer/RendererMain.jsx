@@ -65,15 +65,15 @@ export default function Flow() {
   useEffect(() => toolSelectionHandler(selectedTool), [selectedTool]);
 
   const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    (changes) => setNodes((prevNodes) => applyNodeChanges(changes, prevNodes)),
     []
   );
   const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    (changes) => setEdges((prevEdges) => applyEdgeChanges(changes, prevEdges)),
     []
   );
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => setEdges((prevEdges) => addEdge(params, prevEdges)),
     []
   );
 
