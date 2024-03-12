@@ -17,10 +17,13 @@ const NodeEditor = () => {
     console.log("seting ShowEditTool false");
     setShowNodeEditor(false);
   });
-  const handleChange = useCallback((evt) => {
-    setCurrentNodeLabel(evt.target.value);
-    storeLableChange(currentNodeId, evt.target.value);
-  }, []);
+  const handleChange = useCallback(
+    (evt) => {
+      setCurrentNodeLabel(evt.target.value);
+      storeLableChange(currentNodeId, evt.target.value);
+    },
+    [currentNodeId]
+  );
   useEffect(() => {
     console.log(currentNodeId);
     const nodeCurr = nodesAll.find((n) => n.id == currentNodeId);

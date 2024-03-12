@@ -25,16 +25,11 @@ function TextUpdaterNode(props) {
   } = props;
   const handleFocus = () => {
     console.log("seting ShowEditTool true");
-    console.log(props);
     setShowNodeEditor(true);
     setCurrentNodeId(id);
-    console.log(id);
   };
   const [value, setValue] = useState(data?.label);
-  // useEffect(() => {
-  //   if(id == currentNodeId)
-  //   console.log(currentNode);
-  // }, [currentNode]);
+
   useEffect(() => {
     if (id == currentNodeId) setValue(currentNodeLabel);
   }, [currentNodeLabel]);
@@ -42,7 +37,7 @@ function TextUpdaterNode(props) {
   return (
     <div className="text-updater-node" onClick={handleFocus}>
       {/* <input id={"value-" + id} onChange={handleChange} value={value} /> */}
-      <NodeResizer minWidth={100} minHeight={30} />
+      {/* <NodeResizer minWidth={100} minHeight={30} /> */}
       <div id={"value-" + id}>{value}</div>
       {topHandle && (
         <Handle
