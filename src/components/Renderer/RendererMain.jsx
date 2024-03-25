@@ -76,6 +76,10 @@ export default function Flow() {
     (params) => setEdges((prevEdges) => addEdge(params, prevEdges)),
     []
   );
+  const onNodeClick = useCallback((event, node) => {
+    setShowNodeEditor(true);
+    setCurrentNodeId(node.id);
+  }, []);
 
   return (
     <>
@@ -86,6 +90,7 @@ export default function Flow() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          onNodeClick={onNodeClick}
           nodeTypes={nodeTypes}
           fitView
         >

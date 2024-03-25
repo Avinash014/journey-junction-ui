@@ -6,28 +6,17 @@ import "./text-updater-node.css";
 const handleStyle = { left: 10 };
 
 function TextUpdaterNode(props) {
-  const {
-    setShowNodeEditor,
-    setCurrentNodeId,
-    currentNode,
-    currentNodeLabel,
-    currentNodeId,
-    storeLableChange,
-  } = useContext(RendererContext);
+  const { currentNodeLabel, currentNodeId } = useContext(RendererContext);
   const {
     id,
     data,
     isConnectable,
-    leftHandle,
-    rightHandle,
-    topHandle,
-    bottomHandle,
+    leftHandle = true,
+    rightHandle = true,
+    topHandle = true,
+    bottomHandle = true,
   } = props;
-  const handleFocus = () => {
-    console.log("seting ShowEditTool true");
-    setShowNodeEditor(true);
-    setCurrentNodeId(id);
-  };
+
   const [value, setValue] = useState(data?.label);
 
   useEffect(() => {
@@ -35,7 +24,7 @@ function TextUpdaterNode(props) {
   }, [currentNodeLabel]);
 
   return (
-    <div className="text-updater-node" onClick={handleFocus}>
+    <div className="text-updater-node">
       {/* <input id={"value-" + id} onChange={handleChange} value={value} /> */}
       {/* <NodeResizer minWidth={100} minHeight={30} /> */}
       <div id={"value-" + id}>{value}</div>
