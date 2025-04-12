@@ -1,7 +1,8 @@
 import ReactFlow, { Controls, Background } from "reactflow";
 import "reactflow/dist/style.css";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { applyEdgeChanges, applyNodeChanges, addEdge } from "reactflow";
+import { RendererContext } from "../context/RendererContext";
 const initialNodes = [
   {
     id: "1",
@@ -17,20 +18,29 @@ const initialNodes = [
   {
     id: "3",
     position: { x: 150, y: 150 },
-    data: { label: "hi" },
+    data: { label: "3rd node" },
   },
   {
     id: "4",
     position: { x: 150, y: 200 },
-    data: { label: "hi" },
+    data: { label: "4th node" },
   },
 ];
 const initialEdges = [{ id: "1-2", source: "1", target: "2" }];
 function Flow() {
-  const [tempNodes, setTempNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const { nodes, setNodes, edges, setEdges } = useContext(RendererContext);
+
+  useEffect(() => {
+    const savedFlow = localStorage.getItem("flow-data");
+    if (savedFlow) {
+      const { nodes, edges } = JSON.parse(savedFlow);
+      setNodes(nodes);
+      setEdges(edges);
+    }
+  }, [setNodes, setEdges]);
+
   const onNodesChange = useCallback(
-    (changes) => setTempNodes((nds) => applyNodeChanges(changes, nds)),
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   );
   const onEdgesChange = useCallback(
@@ -41,36 +51,55 @@ function Flow() {
     (params) => setEdges((eds) => addEdge(params, eds)),
     []
   );
+  function generateRandomId() {
+    return Math.random().toString(36).substring(2, 9);
+  }
 
   const handleSave = () => {
-    const flow = { tempNodes, edges };
+    const flow = { nodes, edges };
     localStorage.setItem("flow-data", JSON.stringify(flow));
     alert("Flow saved!");
   };
 
   const handleReset = () => {
-    setNodes([]);
-    setEdges([]);
-    localStorage.removeItem("flow-data");
+    let reset = prompt(
+      "Danger, Are you Sure you want to Reset if Yes Type RESET",
+      ""
+    );
+    if (reset === "RESET") {
+      setNodes([]);
+      setEdges([]);
+      localStorage.removeItem("flow-data");
+      alert("Reset Successful");
+    }
   };
 
   const handleAddNode = () => {
+    console.log("hello");
+    const id = generateRandomId();
     const newNode = {
-      id: `${nodeId++}`,
-      data: { label: `Node ${nodeId}` },
+      id,
+      data: { label: `Node Label` },
       position: { x: Math.random() * 400, y: Math.random() * 400 },
     };
     setNodes((nds) => [...nds, newNode]);
+    console.log(nodes);
   };
   return (
     <div style={{ height: "100%" }}>
-      {/* <div className="w-60 bg-gray-100 p-4 border-r space-y-4">
+      <div
+        style={{
+          position: "fixed",
+          zIndex: 50,
+        }}
+        className="w-60 bg-gray-100 p-4 border-r space-y-4"
+      >
         <h2 className="text-lg font-bold">Toolbar</h2>
         <button
           onClick={handleAddNode}
           className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
-          ➕ Add Node
+          ➕ Add Node 1
         </button>
         <button
           onClick={handleSave}
@@ -84,10 +113,10 @@ function Flow() {
         >
           ♻️ Reset
         </button>
-      </div> */}
+      </div>
 
       <ReactFlow
-        nodes={tempNodes}
+        nodes={nodes}
         onNodesChange={onNodesChange}
         edges={edges}
         onEdgesChange={onEdgesChange}

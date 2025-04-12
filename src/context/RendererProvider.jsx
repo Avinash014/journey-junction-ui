@@ -1,86 +1,103 @@
 import React, { useCallback, useEffect, useState, useReducer } from "react";
 import { RendererContext, RendererDispatchContext } from "./RendererContext";
 
-const defaultEdges = [];
-const defaultNodes = [];
+const defaultEdges = [{ id: "1-2", source: "1", target: "2" }];
+const defaultNodes = [
+  {
+    id: "1",
+    position: { x: 0, y: 0 },
+    data: { label: "Hello" },
+    type: "input",
+  },
+  {
+    id: "2",
+    position: { x: 100, y: 100 },
+    data: { label: "World" },
+  },
+  {
+    id: "3",
+    position: { x: 150, y: 150 },
+    data: { label: "3rd node" },
+  },
+  {
+    id: "4",
+    position: { x: 150, y: 200 },
+    data: { label: "4th node" },
+  },
+];
 
 const RendererProvider = ({ children }) => {
   // const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
-  const [showNodeEditor, setShowNodeEditor] = useState(false);
-  const [selectedTool, setSelectedTool] = useState(null);
+  // const [showNodeEditor, setShowNodeEditor] = useState(false);
+  // const [selectedTool, setSelectedTool] = useState(null);
   const [nodes, setNodes] = useState(defaultNodes);
   const [edges, setEdges] = useState(defaultEdges);
-  const [currentNodeId, setCurrentNodeId] = useState(null);
-  const [currentNode, setCurrentNode] = useState(null);
-  const [currentNodeLabel, setCurrentNodeLabel] = useState("");
-  useEffect(() => {
-    if (!currentNodeId) return;
-    var matchNode = nodes.find((node) => node.id == currentNodeId);
-    setCurrentNode(matchNode);
-    setCurrentNodeLabel(matchNode?.data?.label);
-  }, [currentNodeId]);
+
+  // const [currentNodeId, setCurrentNodeId] = useState(null);
+  // const [currentNode, setCurrentNode] = useState(null);
+  // const [currentNodeLabel, setCurrentNodeLabel] = useState("");
   // useEffect(() => {
-  //   storeNodeChange();
+  //   if (!currentNodeId) return;
+  //   var matchNode = nodes.find((node) => node.id == currentNodeId);
+  //   setCurrentNode(matchNode);
+  //   setCurrentNodeLabel(matchNode?.data?.label);
+  // }, [currentNodeId]);
+  // useEffect(() => {
+  //   console.log("nodes changed");
+  //   console.log(nodes);
   // }, [nodes]);
   // useEffect(() => {
-  //   storeEdgeChange();
+  //   console.log("edges changed");
+  //   console.log(edges);
   // }, [edges]);
-  useEffect(() => {
-    console.log("nodes changed");
-    console.log(nodes);
-  }, [nodes]);
-  useEffect(() => {
-    console.log("edges changed");
-    console.log(edges);
-  }, [edges]);
 
-  const storeLableChange = useCallback((id, newLabel) => {
-    setNodes((prevNodes) =>
-      prevNodes.map((node) => {
-        if (node.id == id) {
-          return { ...node, data: { ...node.data, label: newLabel } };
-        } else return node;
-      })
-    );
-  });
-  const storeNodeChange = useCallback((id, changedNode) => {
-    setNodes(
-      nodes.map((node) => {
-        if (node.id == id) {
-          return changedNode;
-        } else return node;
-      })
-    );
-  });
-  const storeEdgeChange = useCallback((id, changedEdge) => {
-    setEdges(
-      edges.map((edge) => {
-        if (edge.id == id) {
-          return changedEdge;
-        } else return node;
-      })
-    );
-  });
+  // const storeLableChange = useCallback((id, newLabel) => {
+  //   setNodes((prevNodes) =>
+  //     prevNodes.map((node) => {
+  //       if (node.id == id) {
+  //         return { ...node, data: { ...node.data, label: newLabel } };
+  //       } else return node;
+  //     })
+  //   );
+  // });
+  // const storeNodeChange = useCallback((id, changedNode) => {
+  //   setNodes(
+  //     nodes.map((node) => {
+  //       if (node.id == id) {
+  //         return changedNode;
+  //       } else return node;
+  //     })
+  //   );
+  // });
+  // const storeEdgeChange = useCallback((id, changedEdge) => {
+  //   setEdges(
+  //     edges.map((edge) => {
+  //       if (edge.id == id) {
+  //         return changedEdge;
+  //       } else return node;
+  //     })
+  //   );
+  // });
 
   return (
     <RendererContext.Provider
       value={{
-        showNodeEditor,
-        setShowNodeEditor,
-        selectedTool,
-        setSelectedTool,
+        // showNodeEditor,
+        // setShowNodeEditor,
+        // selectedTool,
+        // setSelectedTool,
         nodes,
         setNodes,
         edges,
         setEdges,
-        currentNodeId,
-        setCurrentNodeId,
-        currentNode,
-        currentNodeLabel,
-        setCurrentNodeLabel,
-        storeLableChange,
-        storeNodeChange,
-        storeEdgeChange,
+        // currentNodeId,
+        // setCurrentNodeId,
+        // currentNode,
+        // currentNodeLabel,
+        // setCurrentNodeLabel,
+        // storeLableChange,
+        // storeNodeChange,
+        // storeEdgeChange,
       }}
     >
       <RendererDispatchContext.Provider value={null}>
