@@ -1,8 +1,32 @@
 ---
+const {pageTitle} = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 <div class="nav-links">
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
-<a href="/tags/">Tags</a>
+
+    <li class={currentPath === '/' ? 'active' : ''}>
+        <a href="/">Home</a>
+      </li>
+      <li class={currentPath === '/about' ? 'active' : ''}>
+        <a href="/about">About</a>
+      </li>
+      <li class={currentPath === '/blog' ? 'active' : ''}>
+        <a href="/blog">Blog</a>
+      </li>
+      <li class={currentPath === '/tags' ? 'active' : ''}>
+        <a href="/tags">Tags</a>
+      </li>
+
+
+<!-- <div>{pageTitle}<div> -->
 </div>
+
+
+
+<style>
+  .active a {
+    font-weight: bold;
+    color: #4f46e5;
+    border-bottom: 2px solid #4f46e5;
+  }
+</style>

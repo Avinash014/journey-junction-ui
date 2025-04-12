@@ -25,6 +25,14 @@ const RendererProvider = ({ children }) => {
   // useEffect(() => {
   //   storeEdgeChange();
   // }, [edges]);
+  useEffect(() => {
+    console.log("nodes changed");
+    console.log(nodes);
+  }, [nodes]);
+  useEffect(() => {
+    console.log("edges changed");
+    console.log(edges);
+  }, [edges]);
 
   const storeLableChange = useCallback((id, newLabel) => {
     setNodes((prevNodes) =>

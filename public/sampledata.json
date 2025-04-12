@@ -1,0 +1,32 @@
+{
+  "width": 307,
+  "height": 49,
+  "id": "_JlT9oKQ6Yu4UX6l19G8P",
+  "type": "subtopic",
+  "position": {
+    "x": -637.8333333333334,
+    "y": 628.3333333333335
+  },
+  "selected": false,
+  "data": {
+    "label": "Subtopic 2 (Responsive Design)",
+    "style": {
+      "fontSize": 17,
+      "justifyContent": "flex-start",
+      "textAlign": "center"
+    },
+    "oldId": "SQDfqq4HtywfdbN5FNRko"
+  },
+  "zIndex": 999,
+  "positionAbsolute": {
+    "x": -637.8333333333334,
+    "y": 628.3333333333335
+  },
+  "dragging": false,
+  "style": {
+    "width": 307,
+    "height": 49
+  },
+  "resizing": false,
+  "focusable": true
+}
