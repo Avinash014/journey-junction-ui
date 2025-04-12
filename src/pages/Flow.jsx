@@ -63,8 +63,8 @@ function Flow() {
     setNodes((nds) => [...nds, newNode]);
   };
   return (
-    <div style={{ height: "800px", backgroundColor: "pink" }}>
-      <div className="w-60 bg-gray-100 p-4 border-r space-y-4">
+    <div style={{ height: "100%" }}>
+      {/* <div className="w-60 bg-gray-100 p-4 border-r space-y-4">
         <h2 className="text-lg font-bold">Toolbar</h2>
         <button
           onClick={handleAddNode}
@@ -84,7 +84,7 @@ function Flow() {
         >
           ♻️ Reset
         </button>
-      </div>
+      </div> */}
 
       <ReactFlow
         nodes={tempNodes}

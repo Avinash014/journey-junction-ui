@@ -14,6 +14,7 @@ const navItems = [
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
   { name: "Tags", href: "/tags" },
+  { name: "Builder", href: "/builder" },
 ];
 
 function classNames(...classes) {

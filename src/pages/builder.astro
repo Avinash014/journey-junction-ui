@@ -5,11 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FlowBuilder from '../components/FlowBuilder';
 import Sidebar from '../components/SideBar';
 import Flow from './Flow';
+import BuilderLayout from '../layouts/BuilderLayout.astro';
 const pageTitle = "Home";
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BuilderLayout pageTitle={pageTitle}>
   <FlowBuilder client:load />
-  <!-- <Sidebar /> -->
-  <!-- <Flow /> -->
-  
-</BaseLayout>
+</BuilderLayout>

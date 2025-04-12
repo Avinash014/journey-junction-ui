@@ -25,7 +25,7 @@ const nodeTypes = {
   subTopic: SubTopicNode,
   title: TitleNode,
 };
-export default function Flow() {
+export default function RendererMain() {
   const {
     selectedTool,
     nodes,

@@ -14,12 +14,17 @@ const pathName = Astro.url.pathname;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header pathName={pathName} client:load/>
-    <!-- <h1>{pageTitle}</h1> -->
-    <slot />
-    <Footer />
-    <script>
+    <div class="h-screen flex flex-col">
+        <div class="h-[60px] bg-gray-800 text-white">
+            <Header pathName={pathName} client:load/>
+        </div>
+        <div class="flex-1 overflow-auto">
+            <slot />
+        </div>
+
+    </div>
+    <!-- <script>   
       import "../scripts/menu.js";
-    </script>
+    </script> -->
   </body>
 </html>
